@@ -1,0 +1,18 @@
+#LOCAL Profiles
+server:
+    port: 8080
+    error:
+        include-exception: false
+        include-stacktrace: never
+        path: '/common/error'
+        whitelabel.enabled: false
+
+
+spring:
+    profiles: local
+    datasource:
+        url              : jdbc:mysql://localhost:3306/board
+        driver-class-name: org.mariadb.jdbc.Driver
+        username         : root
+        password         : jwi5387
+        
