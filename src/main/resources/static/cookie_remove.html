@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>:: JavaScript 쿠키 제거 ::</title>
+<script type="text/javascript">
+    function cookieRemove() {
+
+        // 변수를 선언한다.
+        var date = new Date();
+        date.setDate(date.getDate() - 1);
+
+        var willCookie = "";
+        willCookie += "CookieName=Value;";
+        willCookie += "Expires=" + date.toUTCString();
+
+        // 쿠키를 집어넣는다.
+        document.cookie = willCookie;
+
+        // 출력한다.
+        alert(document.cookie);
+    }
+</script>
+</head>
+<body>
+    <h2>JavaScript를 이용한 생성한 쿠키제거.</h2>
+    <input type="button" onClick="cookieRemove();" value="쿠키제거"/>
+</body>
+</html>
