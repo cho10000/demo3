@@ -30,6 +30,6 @@
 		}
 	%>
 	<br><br>
-	<a href="cookieCheck.jsp">쿠키값 확인 페이지로 이동</a>
+	<a href="/checkcook">쿠키값 확인 페이지로 이동</a>
 </body>
 </html>

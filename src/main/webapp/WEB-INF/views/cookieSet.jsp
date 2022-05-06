@@ -18,6 +18,6 @@
 		response.addCookie(cookie);
 	%>
 	<br><br>
-	<a href="cookieGet.jsp">쿠키값 확인창으로 이동</a>
+	<a href="/getcook">쿠키값 확인창으로 이동</a>
 </body>
 </html>

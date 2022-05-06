@@ -24,6 +24,6 @@
 		}
 	%>
 	<br><br>
-	<a href="cookieDel.jsp">쿠키값 삭제 페이지로 이동</a>
+	<a href="/delcook">쿠키값 삭제 페이지로 이동</a>
 </body>
 </html>
