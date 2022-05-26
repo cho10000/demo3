@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Select 2 테스트 </title>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+function setFruit(value) {
+	var fruit = value;
+	
+	$("#fruitCombo").val(fruit).select2();
+}
+
+function resetFruit() {
+	$("#fruitCombo").val("").select2();
+}
+
+$(document).ready(function() {
+		
+	$("#btn1").click(function() {
+		$(".modal").modal("show");
+	});	
+	
+	//$("#ipt1").focus();
+	$(".modal").on("shown.bs.modal", function () {		
+		$("#ipt1").focus();
+	});	
+});
+
+</script>
+
+  </head>
+ 
+
+
+<body>
+
+<form>
+	콤보박스 : 
+    <select id="fruitCombo" style="width: 200px">	
+    	<option value="">선택</option>
+        <option value="apple">사과</option>
+        <option value="watermelon">수박</option>
+        <option value="peach">복숭아</option>
+    </select>
+	<button type="button" class="btn btn-primary" onclick="setFruit('apple')">사과</button>
+	<button type="button" class="btn btn-primary" onclick="setFruit('watermelon')">수박</button>
+	<button type="button" class="btn btn-primary" onclick="setFruit('peach')">복숭아</button>
+	   <button type="button" class="btn btn-primary" onclick="getFruit()">선택</button>	
+    <button type="button" class="btn btn-primary" onclick="resetFruit()">초기화</button>
+
+
+<!-- 	$("#" + id).val(data).select2();  값 셋팅 -->
+<!--  $("#" + id).val(); 값 가져오기 -->
+
+<!--   $("#fruitCombo").val("").select2();  초기화 -->
+
+</form>
+
+<form>
+<button type="button" class="btn btn-primary" id="btn1">모달창오픈</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<input type="text" class="form-control" id="ipt1" placeholder="입력">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+</body>
