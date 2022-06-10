@@ -44,7 +44,7 @@ function callValFunction(val) {
 	alert(val);
 	<!-- alert("함수 실행"); -->
 	window[val]();
-	alert(val+"1111함수 실행");
+	alert(val+"함수 실행");
 
 
 }

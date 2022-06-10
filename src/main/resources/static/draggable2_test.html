@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Draggable </title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ 
+<!-- Popper.js, Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- jQUery Latest Ver -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- jQUery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<style>
+/* 모달창 셀렉트 박스 */
+.select2-container--default{
+text-align : left;
+font-color:#444;
+font-size:12px;
+
+}
+
+</style>
+<script>
+
+	function calculus()
+	{      
+	
+	var sta_ymd = document.getElementById("STA_YMD").value;            
+	var sta_ymd_arr = sta_ymd.split(".");        
+	var end_ymd = document.getElementById("END_YMD").value;        
+	var end_ymd_arr = end_ymd.split(".");                
+	var sta_ymd_obj = new Date(sta_ymd_arr[0], Number(sta_ymd_arr[1])-1, sta_ymd_arr[2]);    
+	var end_ymd_obj = new Date(end_ymd_arr[0], Number(end_ymd_arr[1])-1, end_ymd_arr[2]);        
+	var betweenDay = (end_ymd_obj.getTime() - sta_ymd_obj.getTime())/1000/60/60/24;        
+   
+	document.getElementById("DT_RESULT").value = betweenDay;
+   
+	}
+
+
+	$(function(){	
+		$(".card").draggable({						 								
+			containment: '.container-fluid',	// 드래그 범위 지정 : .container-fluid 영역에서만 드래그 가능
+			opacity: 0.7,						// 드래그시 투명도
+			cancel: '.card-body', 				// 드래그 가능 영역 : .card-body 클래스를 제외한 영역에서 드래그 가능	
+		});		
+	});
+
+	function setFruit(value) {
+		var fruit = value;
+	
+		$("#fruitCombo").val(fruit).select2();
+	}
+
+	function resetFruit() {
+		$("#fruitCombo").val("").select2();
+	}
+
+	$(document).ready(function() {
+		
+		$("#btn1").click(function() {
+			$(".modal").modal("show");
+		});	
+	
+		//$("#ipt1").focus();
+		$(".modal").on("shown.bs.modal", function () {		
+			$("#ipt1").focus();
+		});	
+	});
+
+<!-- 
+	function callFunction() {
+    var dt = new Date();
+	alert(dt);
+
+		alert("함수 실행");
+
+	}
+
+
+// $(document).ready(function() {
+//  	callFunction();
+//먼저 체크박스를 해제하는 방법은 다음과 같다.
+$("input:checkbox[id='id값']").prop("checked", false);
+//반대로 체크박스를 체크하는 방법은?
+$("input:checkbox[id='id값']").prop("checked", true);
+//var yn = $("input:checkbox[id='체크박스의 id값']").is(":checked");
+
+
+ // });
+
+-->
+// 자바스크립트를 사용하여 문자열로 된 값을 날짜 타입으로 변환하기
+
+function calculus(){    
+    var end_ymd = "2019.03.22";    
+    var yyyy = end_ymd.substr(0,4);
+    var mm = end_ymd.substr(5,2);
+    var dd = end_ymd.substr(8,2);                        
+    
+    var com_ymd = new Date(yyyy, mm-1, dd);
+    alert("결과 : " + com_ymd + "/ 월(月) : " + (com_ymd.getMonth()+1));
+}
+
+
+function callValFunction(val) {
+
+	alert(val);
+	<!-- alert("함수 실행"); -->
+	window[val]();
+	<!--  alert(val+"1111함수 실행"); -->
+
+
+}
+
+function fnct1() {
+
+	alert("fnct1 함수 실행");
+
+}
+
+function fnct2() {
+
+	alert("fnct2 함수 실행");
+
+}
+
+function imgCheck(img)
+{    
+    alert(img);        
+	frm.preview.src = "";     
+	frm.preview.src = img;        
+	var preview = document.getElementById('preview');     
+	var width = preview.clientWidth;    
+	var height = preview.clientHeight;     
+	alert("width : " + width + " | height : " + height);    
+	/* 이미지 파일 형식 처리 */    
+	var imgHeader = img.lastIndexOf("\\");    
+	var imgMiddle = img.lastIndexOf(".");          
+	var imgName = img.substring(imgHeader+1, imgMiddle);      
+	var filepoint = img.substring(imgMiddle+1,img.length);    
+	var imgtype = filepoint.toLowerCase();    
+	alert(imgHeader +"/"+ imgMiddle +"/"+ imgName + "/" + imgtype);        
+	if ( imgtype != "jpg" )	{        
+		frm.preview.src = "";        
+		alert(imgtype +"사진은 jpg 파일만 업로드할 수 있습니다.");         
+		return;    
+		}
+}
+
+window.onload = function(){
+    document.getElementById("dom01").innerHTML = 'DOM 접근법';
+}
+
+function OnChange(e)
+{
+	var gubun = e;    
+	switch(gubun)    
+	{
+	    case "in":      
+		{ 
+		 document.getElementById('in_time').innerHTML = "09:00";
+		 break;
+		 }
+		 case "out":
+		 {
+		  document.getElementById('out_time').innerHTML = "18:00";
+		  break;
+		  }
+	}
+}
+
+function showModal()
+{
+	$("#template-action-dialog").dialog({
+		height: 400,
+		width: 600,
+		closeOnEscape : true,
+		draggable : true,
+		appendTo : "#templateActionFrm",
+		title: "서식 등록",
+		},
+		modal: true,
+		overlay:{ opacity: 0., background: '#000000'}
+	});
+
+//diaglog 내 select2 활성화
+
+	$("#addTeamType").select2({
+	dropdownParent: $("#template-action-dialog") 
+	});
+}
+
+</script>
+
+  </head>
+ 
+
+
+<body>
+
+<form name=f1 style=margin:0; onsubmit="return false;" >
+<input type="button" value="출근" onclick="OnChange('in');"> <p id="in_time"></p>   
+<input type="button" value="퇴근" onclick="OnChange('out');"><p id="out_time"></p>
+</form>
+
+<form name=f1 style=margin:0; onsubmit="return false;" >
+<div id='dom01'>    
+</div>
+</form>
+
+<form>
+시작일 : 
+<input type="text" id="STA_YMD" name="STA_YMD" value="2019.02.25">
+종료일 : 
+<input type="text" id="END_YMD" name="END_YMD" value="2019.03.05">
+차이 : 
+<input type="text" id="DT_RESULT" name="DT_RESULT" value="">
+<button type="button" class="btn btn-primary" onclick="calculus()">일자 비교</button>
+
+
+</form>
+<br>
+
+<form id="frm"> 
+<div>TISTORY</div> 
+<img src="" border="0" name="preview" id="preview" >
+<br> 
+<input type="file" name="IMG_FILE" id="IMG_FILE" onchange="imgCheck(this.value)" > 
+</form>
+
+<hr>
+
+<form>
+	콤보박스 : 
+    <select id="fruitCombo" style="width: 200px">	
+    	<option value="">선택</option>
+        <option value="apple">사과</option>
+        <option value="watermelon">수박</option>
+        <option value="peach">복숭아</option>
+    </select>
+	<button type="button" class="btn btn-primary" onclick="setFruit('apple')">사과</button>
+	<button type="button" class="btn btn-primary" onclick="setFruit('watermelon')">수박</button>
+	<button type="button" class="btn btn-primary" onclick="setFruit('peach')">복숭아</button>
+	<p>
+	   <button type="button" class="btn btn-primary" onclick="getFruit()">선택</button>	
+		<button type="button" class="btn btn-primary" onclick="resetFruit()">초기화</button>
+	<p>
+	<button type="button" onclick="callFunction()">TEST함수실행</button>
+
+
+<!-- 	$("#" + id).val(data).select2();  값 셋팅 -->
+<!--  $("#" + id).val(); 값 가져오기 -->
+
+<!--   $("#fruitCombo").val("").select2();  초기화 -->
+
+</form>
+
+<form>
+<button type="button" class="btn btn-primary" id="btn1">모달창오픈</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<input type="text" class="form-control" id="ipt1" placeholder="입력">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+ <form>
+    <button type="button" onclick="callValFunction('fnct1')">TEST함수실행1</button>
+    <button type="button" onclick="callValFunction('fnct2')">TEST함수실행2</button>
+  </form>
+  <p>
+<div class="container-fluid" style="height: 500px; background-color: #66ff66">	
+	<div class="card" style="width: 500px">
+	  <div class="card-header">
+	    Featured
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Special title treatment</h5>
+	    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	</div>    
+</div>  
+
+
+</body>
+</html>
