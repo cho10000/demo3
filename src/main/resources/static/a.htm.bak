@@ -4,34 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery Element Selection</title>
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
  <script>
 $(document).ready(function() {
-	$("#fruitCombo").select2();
+    $("#fruitCombo").select2();
 });
 
 function setFruit(value) {
-	var fruit = value;
-	
-	$("#fruitCombo").val(fruit).select2();
+    var fruit = value;
+    
+    $("#fruitCombo").val(fruit).select2();
+    alert("선택된 과일 : " + fruit);
 }
 
 </script>
 </head>
 <body>
 <form>
-	콤보박스 : 
-	<select id="fruitCombo" style="width: 200px">	
-		<option value="">선택</option>
+    콤보박스 : 
+    <select id="fruitCombo" style="width: 200px">   
+        <option value="">선택</option>
         <option value="apple">사과</option>
         <option value="watermelon">수박</option>
         <option value="peach">복숭아</option>
-    </select>	
-	<button type="button" class="btn btn-primary" onclick="setFruit('apple')">사과</button>
-	<button type="button" class="btn btn-primary" onclick="setFruit('watermelon')">수박</button>
-	<button type="button" class="btn btn-primary" onclick="setFruit('peach')">복숭아</button>
+    </select>   
+    <button type="button" class="btn btn-primary" onclick="setFruit('apple')">사과</button>
+    <button type="button" class="btn btn-primary" onclick="setFruit('watermelon')">수박</button>
+    <button type="button" class="btn btn-primary" onclick="setFruit('peach')">복숭아</button>
 
 </form>
 </body>
