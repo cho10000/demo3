@@ -69,7 +69,7 @@ function renderBlocks(moveType = "") {
     BLOCKS[type][direction].some(block => {
         const x = block[0] + left;
         const y = block[1] + top;
-        // 삼항 연산자 : ==>  조건? 참 : 거싲"
+        // 삼항 연산자 : ==>  조건? 참 : 거짓"
         const target = playground.childNodes[y] ?  playground.childNodes[ y].childNodes[0].childNodes[x] : null;
         const isAvailable = checkEmpty(target);
         if (isAvailable) {
