@@ -14,5 +14,10 @@ spring:
         url              : jdbc:mysql://localhost:3306/board
         driver-class-name: org.mariadb.jdbc.Driver
         username         : root
-        password         : jwi5387
-        
+        password         : jwi5387       
+         
+    devtools:
+        livereload:
+          enabled : true    
+        restart:
+          enabled : true      
